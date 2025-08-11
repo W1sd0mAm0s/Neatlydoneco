@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wachira's Neatly Done Co. — Professional Cleaning Services</title>
+  <meta name="description" content="Wachira's Neatly Done Co.: professional home & office cleaning in Nairobi. Reliable, insured, eco-friendly. Book a clean in minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0b0d10" />
+  <!--
+  Quick edits for you:
+  1) Brand = Wachira's Neatly Done Co.; Phone = +254 714 372 077; Email = hello@wachirasneatlydone.co.ke
+  2) Swap any Unsplash image URLs with other free images if you prefer.
+  3) Colors are black + red: tweak CSS variables under :root.
+  4) Forms: replace FORM_ACTION with your Formspree endpoint (https://formspree.io/f/xxxxxx) or another form service.
+  5) Host this file on GitHub Pages (root as index.html) — we covered steps in chat.
+  -->
+  <style>
+    :root {
+      --bg: #0b0d10;             /* Main background (near-black) */
+      --bg-soft: #121214;         /* Cards background */
+      --text: #f5f6f7;            /* Primary text */
+      --muted: #c2c8d3;           /* Muted text */
+      --line: #1c1d21;            /* Subtle borders */
+      --accent: #ff3b3b;          /* RED primary accent */
+      --accent-2: #b91c1c;        /* deeper red */
+      --accent-3: #ff7a7a;        /* soft red */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 8px;
+      --pad: 20px;
+      --maxw: 1200px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(255,92,122,.18), transparent 60%),
+                  radial-gradient(800px 600px at -10% 20%, rgba(255,59,59,.14), transparent 60%),
+                  linear-gradient(180deg, #090a0c, var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .wrapper { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    /* Topbar */
+    .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: rgba(11,13,16,.65); border-bottom: 1px solid var(--line); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .3px; }
+    .brand-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); display: grid; place-items: center; font-weight: 800; color: #1b0505; }
+    .nav { display: flex; gap: 16px; }
+    .nav a { padding: 8px 12px; border-radius: 10px; color: var(--text); }
+    .nav a:hover { background: rgba(255,255,255,.05); text-decoration: none; }
+
+    .cta-btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid #7a0b0b; background: linear-gradient(135deg, #1a0b0b, #150a0a); color: #ffe5e5; box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), var(--shadow); }
+    .cta-btn .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(255,59,59,.15); }
+    .cta-btn:hover { transform: translateY(-1px); }
+
+    /* Hero */
+    .hero { position: relative; padding: 70px 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,59,59,.14); color: #ffe5e5; border: 1px solid rgba(255,59,59,.4); padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+    .badge .pill { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    h1 { font-size: clamp(32px, 5vw, 56px); line-height: 1.08; margin: 16px 0 10px; letter-spacing: -0.02em; }
+    .sub { font-size: clamp(16px, 2.1vw, 20px); color: var(--muted); margin-bottom: 22px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { padding: 14px 18px; border: none; border-radius: var(--radius-lg); background: linear-gradient(135deg, var(--accent), #ff6b6b 60%); color: #2b0000; font-weight: 800; box-shadow: 0 10px 30px rgba(255,59,59,.25); cursor: pointer; }
+    .btn-secondary { padding: 14px 18px; border-radius: var(--radius-lg); background: #121720; color: var(--text); border: 1px solid var(--line); cursor: pointer; }
+
+    .card { background: linear-gradient(180deg, #0e1117, var(--bg-soft)); border: 1px solid var(--line); border-radius: var(--radius-xl); box-shadow: var(--shadow); }
+
+    .hero-media { position: relative; overflow: hidden; border-radius: var(--radius-xl); min-height: 320px; }
+    .hero-media::before { content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1584634731339-252c581abfc8?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat; filter: saturate(1.08) contrast(1.05) brightness(.95); }
+    .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.35)); }
+
+    /* Trust row */
+    .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+    .trust .trust-item { padding: 14px; background: #0e131a; border: 1px solid var(--line); border-radius: var(--radius-md); display: flex; align-items: center; gap: 10px; color: #d6dbe6; }
+    .trust .dot { width: 8px; height: 8px; background: var(--accent-3); border-radius: 50%; }
+
+    /* Sections */
+    section { padding: 60px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+    .section-head h2 { font-size: clamp(24px, 3.6vw, 36px); margin: 0; letter-spacing: -.02em; }
+    .section-head p { margin: 8px 0 0; color: var(--muted); }
+
+    /* Services */
+    .grid { display: grid; gap: 16px; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .service { padding: 18px; border-radius: var(--radius-xl); border: 1px solid var(--line); background: linear-gradient(180deg, #0d1218, #0b0f14); position: relative; overflow: hidden; }
+    .service h3 { margin: 6px 0 10px; }
+    .service .icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(185,28,28,.35), rgba(255,122,122,.35)); border: 1px solid rgba(255,255,255,.08); }
+    .service p { color: var(--muted); margin: 8px 0 14px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: rgba(255,59,59,.12); border: 1px solid rgba(255,59,59,.35); color: #ffd6d6; font-size: 12px; font-weight: 600; }
+
+    /* Pricing */
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .price-card { padding: 20px; border-radius: var(--radius-xl); border: 1px solid var(--line); background: linear-gradient(180deg, #0d1218, #0a0d12); position: relative; }
+    .price { font-size: 34px; font-weight: 800; letter-spacing: -.02em; }
+    .strike { color: #8b93a2; text-decoration: line-through; font-weight: 600; margin-left: 6px; font-size: 16px; }
+    .features { margin: 12px 0 16px; list-style: none; padding: 0; }
+    .features li { display: flex; gap: 8px; align-items: baseline; padding: 6px 0; border-bottom: 1px dashed #1a212c; }
+    .features li:last-child { border-bottom: none; }
+
+    /* Why us */
+    .why { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    .why .bullet { display: flex; gap: 12px; padding: 12px; background: #0e141b; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+    .why .bullet .b-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 3px; margin-top: 6px; }
+
+    /* Testimonials */
+    .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .review { padding: 18px; border-radius: var(--radius-xl); border: 1px solid var(--line); background: #0e1218; }
+    .stars { color: #ffd76b; }
+
+    /* FAQ */
+    .faq { border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q { width: 100%; text-align: left; padding: 16px; background: #0f1218; color: var(--text); font-weight: 600; border: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-a { display: none; padding: 0 16px 16px; color: var(--muted); }
+
+    /* Gallery (free Unsplash images) */
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 14px; border: 1px solid var(--line); }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
+    form { display: grid; gap: 12px; }
+    input, textarea, select { width: 100%; padding: 12px 14px; border-radius: 12px; background: #0c1016; border: 1px solid #1a2230; color: var(--text); }
+    input:focus, textarea:focus, select:focus { outline: 2px solid rgba(255,59,59,.35); }
+    label { font-weight: 600; font-size: 14px; }
+
+    /* Footer */
+    footer { padding: 40px 0; border-top: 1px solid var(--line); margin-top: 40px; color: var(--muted); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 20px; }
+    .social { display: flex; gap: 10px; }
+    .social a { padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; }
+
+    /* Utilities */
+    .hide { display: none; }
+    .mt-8 { margin-top: 8px; }
+    .mt-14 { margin-top: 14px; }
+    .mt-20 { margin-top: 20px; }
+    .center { text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .hero-grid, .contact, .why { grid-template-columns: 1fr; }
+      .pricing, .reviews, .grid-3, .trust, .footer-grid, .gallery { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .menu-btn { display: inline-flex; }
+    }
+    @media (min-width: 1001px) { .menu-btn { display: none; } }
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(10px); transition: all .6s ease; }
+      .reveal.in { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <a class="hide" href="#content">Skip to content</a>
+  <header class="topbar">
+    <div class="wrapper topbar-inner">
+      <div class="brand">
+        <div class="brand-logo">WN</div>
+        <div>
+          <div>Wachira's Neatly Done Co.</div>
+          <small style="color:var(--muted)">Professional Cleaning Services</small>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#why">Why Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-btn cta-btn" aria-expanded="false" aria-controls="mobile-menu"><span class="dot"></span> Menu</button>
+      <a class="cta-btn" href="#contact"><span class="dot"></span> Get a Free Quote</a>
+    </div>
+    <div id="mobile-menu" class="wrapper hide" role="region" aria-label="Mobile Menu">
+      <div style="display:flex;flex-direction:column;gap:8px;padding:12px 0;">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#why">Why Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="wrapper">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="badge"><span class="pill"></span> Trusted by 1,500+ homes & offices</span>
+          <h1 class="reveal">Spotless Spaces. Zero Hassle.</h1>
+          <p class="sub reveal">Eco-friendly, insured cleaners for homes, offices, and post-construction jobs. Book a professional clean in minutes and enjoy that just-cleaned glow.</p>
+          <div class="hero-actions reveal">
+            <a href="#contact" class="btn-primary">Book a Cleaning</a>
+            <a href="#services" class="btn-secondary">See Services</a>
+          </div>
+          <div class="trust">
+            <div class="trust-item"><span class="dot"></span> Background-checked pros</div>
+            <div class="trust-item"><span class="dot"></span> Supplies & equipment included</div>
+            <div class="trust-item"><span class="dot"></span> Flexible scheduling</div>
+            <div class="trust-item"><span class="dot"></span> 100% satisfaction guarantee</div>
+          </div>
+        </div>
+        <div class="card hero-media" aria-label="Cleaning in action image"></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-head">
+        <h2>Our Services</h2>
+        <p>Residential, commercial, and specialty cleaning tailored to your needs.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="service reveal">
+          <div class="icon">🧹</div>
+          <h3>Home Cleaning</h3>
+          <p>Kitchen, bathrooms, bedrooms, living areas — regular & deep cleaning with eco-safe products.</p>
+          <span class="chip">From KES 2,500 / visit</span>
+        </div>
+        <div class="service reveal">
+          <div class="icon">🏢</div>
+          <h3>Office Cleaning</h3>
+          <p>Daily/weekly schedules, workstations, meeting rooms, reception & sanitization routines.</p>
+          <span class="chip">Custom quotes</span>
+        </div>
+        <div class="service reveal">
+          <div class="icon">🧼</div>
+          <h3>Deep & Move-Out</h3>
+          <p>Appliance interiors, grout scrubbing, high dusting, and tough-to-reach areas.</p>
+          <span class="chip">From KES 6,500</span>
+        </div>
+        <div class="service reveal">
+          <div class="icon">🧽</div>
+          <h3>Post-Construction</h3>
+          <p>Debris removal, fine dust cleanup, window washing, and site detailing.</p>
+          <span class="chip">Site assessment</span>
+        </div>
+        <div class="service reveal">
+          <div class="icon">🪟</div>
+          <h3>Windows & Glass</h3>
+          <p>Streak-free glass cleaning for homes & storefronts, inside and out.</p>
+          <span class="chip">Add-on</span>
+        </div>
+        <div class="service reveal">
+          <div class="icon">🧴</div>
+          <h3>Upholstery & Carpet</h3>
+          <p>Spot treatment, deodorizing, and steam cleaning to refresh fabrics & floors.</p>
+          <span class="chip">By room / sq. ft.</span>
+        </div>
+      </div>
+
+      <!-- Free image gallery (Unsplash) -->
+      <div class="section-head" style="margin-top:26px"><h2>Gallery</h2><p>All images are free-to-use photos embedded from Unsplash.</p></div>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1585421514757-1c72f85b4f44?q=80&w=1200&auto=format&fit=crop" alt="Cleaning supplies on a countertop (Unsplash)" />
+        <img src="https://images.unsplash.com/photo-1584634731339-252c581abfc8?q=80&w=1200&auto=format&fit=crop" alt="Person cleaning a table (Unsplash)" />
+        <img src="https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?q=80&w=1200&auto=format&fit=crop" alt="Vacuuming a rug (Unsplash)" />
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="section-head">
+        <h2>Transparent Pricing</h2>
+        <p>Simple packages you can customize. No hidden fees.</p>
+      </div>
+      <div class="pricing">
+        <div class="price-card reveal">
+          <div class="badge"><span class="pill"></span> Starter</div>
+          <div class="price">KES 2,500<span class="strike">KES 3,000</span></div>
+          <ul class="features">
+            <li>1 bedroom or studio</li>
+            <li>Kitchen & 1 bathroom</li>
+            <li>Floors & surfaces</li>
+            <li>Trash removal</li>
+          </ul>
+          <a href="#contact" class="btn-primary">Book Starter</a>
+        </div>
+        <div class="price-card reveal" style="border:2px solid rgba(255,59,59,.6)">
+          <div class="badge" style="background:rgba(255,59,59,.16);border-color:rgba(255,59,59,.45);color:#ffe5e5"><span class="pill" style="background:var(--accent)"></span> Most Popular</div>
+          <div class="price">KES 4,500</div>
+          <ul class="features">
+            <li>2–3 bedrooms</li>
+            <li>Kitchen & 2 bathrooms</li>
+            <li>Appliance exteriors</li>
+            <li>Detailed surfaces</li>
+          </ul>
+          <a href="#contact" class="btn-primary">Book Standard</a>
+        </div>
+        <div class="price-card reveal">
+          <div class="badge" style="background:rgba(185,28,28,.14);border-color:rgba(185,28,28,.4)"><span class="pill" style="background:var(--accent-2)"></span> Premium</div>
+          <div class="price">Custom</div>
+          <ul class="features">
+            <li>Large homes & offices</li>
+            <li>Deep cleaning & add-ons</li>
+            <li>Windows & carpets</li>
+            <li>Priority scheduling</li>
+          </ul>
+          <a href="#contact" class="btn-primary">Get Custom Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section id="why">
+      <div class="section-head">
+        <h2>Why Choose Wachira's Neatly Done Co.?</h2>
+        <p>We blend reliability, eco-friendly products, and five-star service.</p>
+      </div>
+      <div class="why">
+        <div class="grid">
+          <div class="bullet reveal"><div class="b-dot"></div><div><strong>Trained & insured pros</strong><br/><span style="color:var(--muted)">Background checks, safety training, and full coverage.</span></div></div>
+          <div class="bullet reveal"><div class="b-dot"></div><div><strong>Eco-friendly products</strong><br/><span style="color:var(--muted)">Safe for kids, pets, and the environment.</span></div></div>
+          <div class="bullet reveal"><div class="b-dot"></div><div><strong>On-time guarantee</strong><br/><span style="color:var(--muted)">If we're late, you get a discount — it’s that simple.</span></div></div>
+          <div class="bullet reveal"><div class="b-dot"></div><div><strong>Flexible scheduling</strong><br/><span style="color:var(--muted)">One-time, weekly, bi-weekly, or monthly.</span></div></div>
+        </div>
+        <div class="card" style="padding:18px">
+          <h3>Areas We Serve</h3>
+          <p class="mt-8" style="color:var(--muted)">Nairobi, Westlands, Kilimani, Parklands, Upper Hill, Karen, Gigiri, and surrounding areas.</p>
+          <div class="mt-14" style="border-radius:14px; overflow:hidden; border:1px solid var(--line)">
+            <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.69425917329!2d36.796!3d-1.286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d6b1d1b60f%3A0xf7d4a4b2c3f6fd84!2sNairobi%20CBD!5e0!3m2!1sen!2ske!4v1680000000000" width="100%" height="260" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p class="mt-14" style="color:var(--muted)">Need a different location? <a href="#contact">Get in touch</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <div class="section-head">
+        <h2>Happy Clients</h2>
+        <p>Real feedback from homes & offices we care for.</p>
+      </div>
+      <div class="reviews">
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          "The team is always on time and thorough. My apartment has never looked better."<br/>
+          <small style="color:var(--muted)">— Sarah, Kilimani</small>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          "Professional and trustworthy. They handled our office after-hours — spotless!"<br/>
+          <small style="color:var(--muted)">— David, Westlands</small>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          "Deep clean was worth every shilling. They even did the oven and windows."<br/>
+          <small style="color:var(--muted)">— Anita, Parklands</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-head">
+        <h2>FAQ</h2>
+        <p>Answers to common questions about our service.</p>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q">Do you bring supplies and equipment? <span>＋</span></button>
+          <div class="faq-a">Yes. Our teams arrive with eco-friendly products, microfiber cloths, mops, and vacuum.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Are you insured and background-checked? <span>＋</span></button>
+          <div class="faq-a">Absolutely. All cleaners are vetted and covered so you’re protected.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What if I’m not satisfied? <span>＋</span></button>
+          <div class="faq-a">Let us know within 24 hours. We’ll come back and make it right, free of charge.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-head">
+        <h2>Get a Free Quote</h2>
+        <p>Tell us about your space, and we’ll confirm in minutes.</p>
+      </div>
+      <div class="contact">
+        <form action="FORM_ACTION" method="POST" class="card" onsubmit="this.querySelector('button[type=submit]').disabled=true;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px;">
+            <div>
+              <label for="name">Full Name</label>
+              <input id="name" name="name" placeholder="Jane Doe" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" value="0714 372 077" required />
+            </div>
+            <div>
+              <label for="service">Service</label>
+              <select id="service" name="service">
+                <option>Home Cleaning</option>
+                <option>Office Cleaning</option>
+                <option>Deep / Move-Out</option>
+                <option>Post-Construction</option>
+                <option>Windows & Glass</option>
+                <option>Upholstery & Carpet</option>
+              </select>
+            </div>
+            <div style="grid-column:1/-1">
+              <label for="message">Details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Rooms, frequency, preferred dates…"></textarea>
+            </div>
+            <div style="grid-column:1/-1;display:flex;gap:10px;align-items:center">
+              <button type="submit" class="btn-primary">Request Quote</button>
+              <a class="cta-btn" href="https://wa.me/254714372077" target="_blank" rel="noopener">WhatsApp Us</a>
+            </div>
+          </div>
+        </form>
+        <div class="card" style="padding:18px">
+          <h3>Contact</h3>
+          <p class="mt-8">Phone: <a href="tel:+254714372077">+254 714 372 077</a><br/>Email: <a href="mailto:hello@wachirasneatlydone.co.ke">hello@wachirasneatlydone.co.ke</a></p>
+          <h3 class="mt-20">Address</h3>
+          <p class="mt-8">Wachira's Neatly Done Co. Ltd<br/>Kilimani, Nairobi, Kenya</p>
+          <h3 class="mt-20">Hours</h3>
+          <p class="mt-8">Mon–Sat: 8:00–18:00<br/>Sun: By appointment</p>
+          <div class="mt-20"><small style="color:var(--muted)">We reply within the hour during business time.</small></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrapper footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <div class="brand-logo">WN</div>
+          <strong>Wachira's Neatly Done Co.</strong>
+        </div>
+        <p>Professional cleaning services for homes and offices. Serving Nairobi and surrounding areas.</p>
+        <div class="social mt-14">
+          <a aria-label="Facebook" href="#">Fb</a>
+          <a aria-label="Instagram" href="#">Ig</a>
+          <a aria-label="X" href="#">X</a>
+          <a aria-label="LinkedIn" href="#">In</a>
+        </div>
+      </div>
+      <div>
+        <strong>Company</strong>
+        <ul style="list-style:none;padding:0;margin-top:10px;color:var(--muted)">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#why">Why Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <ul style="list-style:none;padding:0;margin-top:10px;color:var(--muted)">
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Newsletter</strong>
+        <form class="mt-8" action="FORM_ACTION" method="POST">
+          <input type="email" name="newsletter" placeholder="you@example.com" required />
+          <button class="btn-primary mt-8" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="wrapper" style="margin-top:24px;color:#8f98a8">© <span id="yr"></span> Wachira's Neatly Done Co.. All rights reserved.</div>
+  </footer>
+
+  <!-- Structured data for SEO (update with your real company info) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Wachira's Neatly Done Co.",
+    "image": "https://images.unsplash.com/photo-1585421514757-1c72f85b4f44?q=80&w=1200&auto=format&fit=crop",
+    "@id": "",
+    "url": "https://wachirasneatlydone.co.ke/",
+    "telephone": "+254714372077",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kilimani",
+      "addressLocality": "Nairobi",
+      "postalCode": "",
+      "addressCountry": "KE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -1.286389,
+      "longitude": 36.817223
+    },
+    "areaServed": "Nairobi",
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    }],
+    "sameAs": ["https://www.facebook.com/yourpage","https://www.instagram.com/yourpage"]
+  }
+  </script>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('hide') === false;
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ans = btn.parentElement.querySelector('.faq-a');
+        const open = getComputedStyle(ans).display !== 'none';
+        document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+        ans.style.display = open ? 'none' : 'block';
+      });
+    });
+
+    // Scroll reveal
+    const observer = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 }) : null;
+    document.querySelectorAll('.reveal').forEach(el => observer?.observe(el));
+
+    // Footer year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
